@@ -1,0 +1,388 @@
+/* Style for the sticky banner at the top of the page */
+.sticky-banner {
+  position: fixed;
+  top: 0;
+  background-color: #000; /* Removed the comment to apply the background color */
+  background-image: linear-gradient(270deg, #000, #003b0f, #000);
+  background-size: 400% 400%;
+  animation: AnimationName 25s ease infinite;
+  background-color: #000; /* Change to a nice green for higher visibility */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
+  min-width: 100%;
+  font-size: 20px; /* Increase font size for better readability */
+  /* font-weight: bold; Make the font bold */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow for a 3D effect */
+}
+
+/* Set the width of the popup */
+body {
+    background-color: #1F1F1F; /* Adjust background color to match the example */
+    color: #e0e0e0; /* Light text color for contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match font to example */
+    font-size: 16px;
+    overflow-x: hidden;
+    padding: 0;
+    margin-top: 60px;
+    border-radius: 10px; /* Add border radius to match card style */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadow to match card style */
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+/* Style for the green checkmark */
+.checkmark {
+    color: green;
+    margin-right: 5px;
+}
+
+/* Additional container styling for layout */
+#widgets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+  text-align: left;
+}
+
+.widget {
+  font-size: 16px;
+  padding: 0px 20px 20px 20px;
+  margin: 0 10px 10px;
+  color: #e0e0e0;
+  background-color: #252526;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-content {
+  flex-grow: 1;
+}
+
+#helpButton {
+  font-size: 12px;
+}
+
+#videoContainer {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+#helpVideo {
+  width: 100%;
+  height: auto;
+}
+
+/* Style for links to make them stand out in dark mode */
+a {
+    color: #4ea8de; /* Light blue color for links */
+    cursor: pointer; /* Change cursor to pointer to indicate interactivity */
+}
+
+/* Additional style for link-styled text */
+.link-style {
+    color: #4ea8de; /* Light blue color for links */
+    cursor: pointer; /* Change cursor to pointer to indicate interactivity */
+}
+
+/* Style for input elements to fit dark mode */
+input, button, select, textarea {
+    background-color: #2d2d2d; /* Slightly lighter background for inputs */
+    color: #dcdcdc; /* Slightly lighter text color for better readability */
+    border: 1px solid #3a9ad9; /* Lighter border color */
+    padding: 8px 12px; /* Further reduced padding */
+    font-size: 14px; /* Reduced font size */
+    border-radius: 4px; /* Smaller border radius */
+    display: inline-block; /* Make input and button display inline */
+    margin-right: 4px; /* Add margin to the right of the input */
+    /* Other styles remain unchanged */
+}
+
+input.config-input {
+  width: 50%; /* Reduce the width of the input */
+  margin-bottom: 10px; /* Add some space below the input */
+}
+
+.total-spaces-input {
+  width: 20%;
+  margin-bottom: 10px; /* Add some space below the input */
+}
+
+button:hover {
+    background-color: #4ea8de;
+    color: #121212;
+}
+
+/* Style for the cursor on clickable elements */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Style for underlined text to indicate interactivity */
+.text-underline {
+    text-decoration: underline;
+}
+
+/* Style for blue text to indicate interactivity */
+.text-blue {
+    color: #4ea8de;
+}
+
+.horizontal-center {
+  text-align: center;
+}
+
+#tableContainer {
+  padding: 20px;
+}
+
+#crafting-cost-table {
+  width: 100%;
+  padding: 20px;
+}
+
+#currency-table {
+  width: 100%;
+  padding: 20px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+#bigTimePrice {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#bigTimePriceAmount {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #aeaab6;
+}
+
+#bigTimePriceChange {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+#openLootPrice {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#openLootPriceAmount {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #aeaab6;
+}
+
+#openLootPriceChange {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+#utcClock {
+  color: #999;
+}
+
+#nextPickupDiv {
+    font-size: 20px;
+}
+
+#nextPickupNotice {
+  color: #999;
+}
+
+#leaderboardLink {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+#heading {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0.9;
+    margin: 0;
+  }
+  #subheading {
+    font-size: 18px;
+    text-align: center;
+    font-weight: normal;
+    opacity: 0.8;
+    margin-top: 0;
+}
+.ready {
+  color: #90ee90;
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+/* Style for the configuration cog icon */
+.config-cog {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  z-index: 1000;
+  display: block; /* Ensure the cog is displayed */
+}
+
+/* Style for the slide-out configuration panel */
+.config-panel {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(37, 37, 38, 0.95); /* Use a semi-transparent background for the config panel */
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-right: 4px solid #3a9ad9; /* Add a left border */
+}
+
+#configPanelContent {
+  background-color: #252526; /* Use the widget background color for dark mode */
+  overflow-x: hidden;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0; /* Set initial opacity to 0 for fade-in effect */
+  transition: opacity 1.5s ease-in; /* Transition effect for opacity change */
+}
+
+
+/* Style for the close button in the configuration panel */
+#closeConfig {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+input[type="number"].config-input,
+input[type="text"].config-input {
+  width: 50%; /* Set the width of the input to 50% */
+  margin-bottom: 10px; /* Add some space below the input */
+}
+
+.total-spaces-input {
+  width: 20%;
+  margin-bottom: 10px; /* Add some space below the input */
+}
+
+button.config-save-button {
+  padding: 8px 12px; /* Match padding with inputs */
+  font-size: 14px; /* Match font size with inputs */
+  background-color: #3a9ad9; /* Use the theme's accent color */
+  color: #ffffff; /* White text for contrast */
+  border: none; /* No border for a flat design */
+  cursor: pointer; /* Indicate the button is clickable */
+  border-radius: 4px; /* Rounded corners to match inputs */
+}
+
+button.config-save-button:hover {
+  background-color: #4ea8de; /* Lighter shade for hover effect */
+}
+/* Flash message styles */
+.flash-message {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: #323639; /* Darker background for better contrast */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.5s;
+  color: #ffffff; /* White text color for better readability */
+  text-align: center; /* Center the text within the flash message */
+}
+
+.red-heart {
+  filter: invert(15%) sepia(99%) saturate(6588%) hue-rotate(360deg) brightness(105%) contrast(117%);
+  width: 20px;
+  vertical-align: middle;
+}
+@media (max-width: 1200px) {
+  #widgets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #widgets {
+    grid-template-columns: 1fr;
+  }
+}
+
+#spaces-count {
+  max-height: 140px;
+  overflow-y: auto;
+}
+#spaces-count ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+/* Style for the tabs */
+.tabs {
+  overflow: hidden;
+  background: #2d2d2d;
+  font-family: Open Sans;
+}
+
+.tab-button {
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  background-color: inherit;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-button.active {
+  background-color: #000;
+}
+
+.tab-content {
+  display: none;
+  border-top: none;
+}
+
+th {
+  text-align: left;
+}
+@keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}

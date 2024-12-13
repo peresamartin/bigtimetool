@@ -1,0 +1,287 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="static/datatables/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+  <link rel="stylesheet" type="text/css" href="static/datatables/datatables.css">
+  <script src="static/datatables/datatables.min.js"></script>
+  <script src="moment.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="static/cog.svg">
+  <script src="popup.js"></script>
+  <script src="premium-currencies.js"></script>
+</head>
+
+<body>
+
+  <div id="configPanel" class="config-panel">
+    <div id="configPanelContent">
+      <h1>Settings</h1>
+      <div>
+        <label for="countdownDateInput" class="config-label">Countdown Date (UTC):</label><br>
+        <input type="text" id="countdownDateInput" class="config-input" placeholder="YYYY-MM-DD" /><button id="saveCountdownDate" class="config-save-button">Save</button>
+      </div>
+      <div>
+        <div>
+          <label for="avgCrackedDropsInput" class="config-label">Avg CHG every 48H:</label><br>
+          <input type="number" id="avgCrackedDropsInput" class="config-input" step="0.1" /><button id="saveAvgCrackedDrops" class="config-save-button">Save</button>
+        </div>
+      </div>
+      <div>
+        <label for="totalSpacesInput" class="config-label">Total Spaces:</label><br>
+        <input type="number" id="totalSpacesInput" class="total-spaces-input" /><button id="saveTotalSpaces" class="config-save-button">Save</button>
+        <button id="resetTotalSpaces" class="config-reset-button">Reset</button>
+        <p id="wardensNeededFormula" style="font-size: 13px; color: #fff; margin-top: 5px;">
+          Wardens needed formula:<br>
+          Wardens Needed = Total Spaces * (Avg CHG every 48H) / (10 / (77 / 48))
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="widgets">
+
+    <div id="statusWidget" class="widget">
+      <div id="status widget-content">
+
+        <div>
+          <br>
+          <span id="utcClock">UTC: Loading...</span>
+          <br>
+          <br>
+          <span id="bigTimePrice">
+            <a href="https://www.coingecko.com/en/coins/big-time" target="_blank"></a> Loading...
+          </span>
+          <span id="bigTimePriceAmount" style="font-weight: bold;"></span>
+          <span id="bigTimePriceChange" style="font-weight: bold;"></span>
+		  <br>
+          <span id="openLootPrice">
+            <a href="https://www.coingecko.com/en/coins/open-loot" target="_blank"></a> Loading...
+          </span>
+          <span id="openLootPriceAmount" style="font-weight: bold;"></span>
+          <span id="openLootPriceChange" style="font-weight: bold;"></span>
+        </div>
+        <br>
+        <br>
+        <div id="nextPickupDiv">
+          Cracked Hourglass pickup:
+          <br>
+          <span id="ready-count"></span>
+          <span id="next-pickup"></span>
+        </div>
+        <span id="nextPickupNotice">(refresh page to see update)</span>
+
+
+      </div>
+    </div>
+
+    <div id="spacesWidget" class="widget">
+      <div class="widget-content">
+        <h3 id="totalSpaces">Spaces:0</h3>
+        <div id="spaces-count"></div>
+        <div id="potentialRevenue"></div>
+        <div id="perSpaceRevenue"></div>
+        <br>
+        <div id="wardensNeeded"></div>
+      </div>
+      <div id="loadingMessage">Loading data...</div>
+    </div>
+
+    <div id="linksWidget" class="widget">
+      <div class="widget-content">
+        <h3>Useful links</h3>
+          <a href="https://bigtime.gg/big-time-leaderboard" target="_blank">Leaderboard</a>
+          <br>
+          <a href="https://bigtime.gg/" target="_blank">Big Time</a>
+          <br>
+          <a href="https://evermorewardens.com/" target="_blank">Evermore Wardens</a>
+          <br>
+          <a href="https://dashloot.com/" target="_blank">Dash Loot</a>
+          <br>
+          <br>
+          - Space:
+          <a href="https://openloot.com/marketplace?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&category=space&sort=price%3Aasc" target="_blank">Buy</a>
+          <a href="https://openloot.com/marketplace/rentals?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&category=space&sort=price%3Aasc" target="_blank">Rent</a>
+          <br>
+          - Wardens:
+          <a href="https://openloot.com/marketplace?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&sort=price%3Aasc&category=workshop&tag=NFT.Workshop.TimeWarden" target="_blank">Buy</a>
+          <a href="https://openloot.com/marketplace/rentals?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&sort=price%3Aasc&category=workshop&tag=NFT.Workshop.TimeWarden" target="_blank">Rent</a>
+          <br>
+          - Hourglasses:
+          <a href="https://openloot.com/marketplace?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&tag=NFT.Hourglass&sort=price%3Aasc" target="_blank">Buy</a>
+          <a href="https://openloot.com/marketplace/rentals?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&tag=NFT.Hourglass&sort=price%3Aasc&rentalListingTypes=SINGLE_LISTING" target="_blank">Rent</a>
+
+      </div>
+
+    </div>
+	<div id="linksWidget" class="widget">
+	<br>
+    <input id="today" type="datetime-local">
+	<div>
+	<div>
+	Hour:
+	<input type="number" name="enter" class="enter" id="Hour" value="0"/>
+	</div>
+	<div>
+	Minute:
+	<input type="number" name="enter" class="enter" id="Minute" value="0"/>
+	</div>
+	<br>
+	<button class="time-button">Add to Current time</button>
+	<br>
+	<br>
+	<input id="calculated" type="datetime-local">
+
+
+    </div>
+
+    </div>
+    
+
+  </div>
+
+  <div id="flashMessageContainer" class="flash-message"></div>
+  <div class="tabs">
+    <button class="tab-button" data-tab-target="Spaces">Spaces</button>
+    <button class="tab-button" data-tab-target="Currencies">Premium Currencies</button>
+    <button class="tab-button" data-tab-target="craftingCosts">Crafting Costs</button>
+  </div>
+
+  <div id="Spaces" class="tab-content" style="display:none;">
+
+    <br>
+    <div id="tableContainer" style="overflow-y: auto;">
+      <table id="spacesTable" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Issued ID</th>
+            <th>Next pickup</th>
+            <th>Epoch Elapsed</th>
+            <th>Rarity</th>
+            <th>Size</th>
+            <th>Interval</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be inserted here by popup.js -->
+        </tbody>
+      </table>
+    </div>
+    <ul id="times"></ul>
+
+  </div>
+
+  <div id="Currencies" class="tab-content" style="display:none;">
+    <br>
+    <div id="premiumCurrencies" class="">
+      <div>
+        <input type="checkbox" id="all" name="all" checked>
+        <label for="all">All</label>
+        <input type="checkbox" id="crystals" name="crystals">
+        <label for="crystals">Crystals</label>
+        <input type="checkbox" id="terra" name="terra">
+        <label for="terra">Terra</label>
+        <input type="checkbox" id="blushfire" name="blushfire">
+        <label for="blushfire">Blushfire</label>
+        <input type="checkbox" id="bigtime" name="bigtime">
+        <label for="bigtime">BigTime</label>
+      </div>
+      <table id="currency-table">
+        <thead>
+          <tr>
+            <th>Qty</th>
+            <th>Name</th>
+            <th>Purchase</th>
+            <th>Per Item</th>
+            <th>Refine</th>
+          </tr>
+        </thead>
+        <tbody id="currency-table-body">
+          <!-- Currency data will be inserted here -->
+        </tbody>
+      </table>
+      <div id="local-storage-contents"></div>
+
+    </div>
+  </div>
+
+  <div id="craftingCosts" class="tab-content" style="display:none;">
+    <table id="crafting-cost-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Armory</th>
+          <th>Forge</th>
+          <th>Warden</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Common</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>UnCommon</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Rare</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Epic</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Legendary</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Mythic</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Exalted</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Exotic</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Transcendant</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Unique</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+   "action": {
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "description": "View time remaining for spaces to drop cracked hourglasses",
+   "host_permissions": [ "https://*.openloot.com/", "https://lookerstudio.google.com/reporting/*" ],
+   "icons": {
+      "128": "static/hourglass.png"
+   },
+   "manifest_version": 3,
+   "name": "Big Time Tools",
+   "permissions": [ "storage" ],
+   "version": "2.0.0"
+}
